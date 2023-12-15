@@ -1,0 +1,14 @@
+{% extends "base.html" %}
+{% import "bootstrap/wtf.html" as wtf %}
+
+{% block title %}Color Recognition - Result{% endblock %}
+
+{% block page_content %}
+    <h1>Hello, {% if current_user.is_authenticated %}{{current_user.username}}{% else %}Stranger{% endif %}</h1>
+    <img width="640" height="640" src="static/{{ session['image_path'] }}">
+    {% if session['color'] and session['color'] != None %}
+        <h2>{{ session['color'] }}</h2>
+    {% else %}
+        <h2>Unknown</h2>
+    {% endif %}
+{% endblock %}
